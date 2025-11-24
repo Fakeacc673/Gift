@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choosing Page</title>
+  <link rel="icon" type="image/png" href="images/cake.png">
+  <style>
+    /* ---------------- Fonts ---------------- */
+    @font-face {
+      font-family: 'MainTitleFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'ParagraphFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'ButtonFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MenuFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+
+    /* ---------------- Reset ---------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ffeef5; /* baby pink */
+      color: #333;
+      font-family: 'ParagraphFont', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* خلفية النجوم */
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* ---------------- Header ---------------- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-family: 'MainTitleFont', sans-serif;
+      font-size: 26px;
+      font-weight: bold;
+      color: #d47a9d;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      font-family: 'MenuFont', sans-serif;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d47a9d;
+    }
+
+    /* ---------------- Our Story ---------------- */
+    .story {
+      background: #fff;
+      margin: 100px auto 40px; /* مسافة من فوق بسبب الهيدر */
+      padding: 40px;
+      width: 80%;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .story h3 {
+      font-family: 'MainTitleFont', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #d47a9d;
+    }
+
+    .story p {
+      font-family: 'ParagraphFont', sans-serif;
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* ---------------- Specials ---------------- */
+    .specials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 60px;
+    }
+
+    .special-item {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .special-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .special-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .special-item h4 {
+      font-family: 'MainTitleFont', sans-serif;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #d47a9d;
+    }
+
+    .special-item p {
+      font-family: 'ParagraphFont', sans-serif;
+      padding: 0 15px 15px;
+      color: #555;
+      font-size: 16px;
+    }
+
+    .special-item button {
+      font-family: 'ButtonFont', sans-serif;
+      background: #d47a9d;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .special-item button:hover {
+      transform: translateY(-3px);
+      background: #b85d83;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- خلفية النجوم -->
+  <div id="tsparticles"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>Click & Enjoy</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Return to the main page</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Our Story -->
+  <section class="story" id="story">
+    <h3>Just a Short Message</h3>
+    <p>
+        Here are three buttons. Choose and find out. I hope this makes you happy today ❤️.
+    </p>
+  </section>
+  
+
+  <!-- Specials -->
+  <section class="specials" id="specials">
+    <div class="special-item">
+      <img src="gifs/gift.gif" alt="Gift">
+      <h4>Your Special Gift</h4>
+      <p>Ntmana t3ajbek, I really did from my heart ❤️</p>
+      <button onclick="playClickSound(); window.location.href='gift.html';">Open Your Gift</button>
+    </div>
+    <div class="special-item">
+      <img src="gifs/be honest.gif" alt="Be Honest">
+      <h4>Be honest, do you know us well?</h4>
+      <p>I think you will like this.</p>
+      <button onclick="playClickSound(); window.location.href='behonest.html';">Come in</button>
+    </div>
+    <div class="special-item">
+      <img src="gifs/bestgiftforu3.gif" alt="Preparation">
+      <h4>Preparation</h4>
+      <p>You'll find the behind-the-scenes here haha</p>
+      <button onclick="playClickSound(); window.location.href='preparation.html';">View Details</button>
+    </div>
+  </section>
+
+  <!-- Sound Effect -->
+  <audio id="clickSound" src="sounds/click.mp3"></audio>
+  <script>
+    function playClickSound() {
+      const sound = document.getElementById("clickSound");
+      sound.currentTime = 0; 
+      sound.play();
+    }
+  </script>
+
+</body>
+</html>

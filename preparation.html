@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preparation Page</title>
+  <link rel="icon" type="image/png" href="images/cake.png">
+
+  <style>
+    /* ---------------- Fonts ---------------- */
+    @font-face {
+      font-family: 'MainTitleFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'ParagraphFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MenuFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+
+    /* استيراد الخط */
+    @font-face {
+       font-family: 'MyLetterFont'; /* ✨ اختاري أي اسم تحبينه */
+       src: url('fonts/alfont_com_KOSans-Bold.otf') format('truetype');
+       font-weight: normal;
+       font-style: normal;
+   }
+
+    /* تطبيق الخط على نص الرسالة */
+     .letter-message {
+     font-family: 'MyLetterFont', sans-serif;
+    }
+
+
+    /* ---------------- Reset ---------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ffeef5; /* baby pink */
+      color: #333;
+      font-family: 'ParagraphFont', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ---------------- Header ---------------- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-family: 'MainTitleFont', sans-serif;
+      font-size: 26px;
+      font-weight: bold;
+      color: #d47a9d;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+  font-family: 'MenuFont', sans-serif;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #d47a9d;
+}
+
+
+    /* ---------------- Story ---------------- */
+    .story {
+      background: #ffffff;
+      margin: 120px auto 40px; /* مسافة من فوق بسبب الهيدر */
+      padding: 20px;
+      width: 50%;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .story h3 {
+      font-family: 'MainTitleFont', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #d47a9d;
+    }
+
+    .story p {
+      font-family: 'ParagraphFont', sans-serif;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .side-image {
+  position: fixed;   /* الصور تبقى ثابتة */
+  top: 50%;          /* توسيط عمودي */
+  transform: translateY(-50%);
+  width: 200px;       /* حجم الصورة */
+  height: auto;
+  z-index: 1000;     /* فوق كل العناصر */
+}
+
+.side-image.left {
+  left: 30px;        /* على اليسار */
+}
+
+.side-image.right {
+  right: 30px;       /* على اليمين */
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Click & Enjoy</h1>
+    <nav>
+      <ul>
+        <li><a href="second.html">Return to the choosing page</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Story -->
+  <section class="story" id="story">
+    <h3>behind the scenes</h3>
+    <p>Honestly, I'm the type who loves details and memories and things like that, so I said why we don't make a special place for our preparations for your birthday. When we grow up, it will be a memory for us in the future.</p>
+  
+
+<!-- صور جانبية ثابتة -->
+<img src="images/leila2.png" alt="Left side" class="side-image left">
+<img src="images/leila.png" alt="Right side" class="side-image right">
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- موسيقى ناعمة -->
+<audio id="bgMusic" src="soft-music.mp3"></audio>
+
+<style>
+/* ---- ظرف كيوت ---- */
+.envelope-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.envelope {
+  position: relative;
+  width: 480px;
+  height: 300px;
+  background: #ffd6e7;
+  border: 2px solid #d47a9d;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+
+.envelope:hover {
+  transform: scale(1.05);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: #ffc3da;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transition: transform 0.6s;
+  transform-origin: top;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-letter {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fffafc;
+  text-align: center;
+  padding: 20px;
+  border: 2px dashed #d47a9d; /* ✨ إطار الرسالة */
+  box-sizing: border-box;
+  transition: top 0.6s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.envelope.open .envelope-letter {
+  top: 0;
+}
+
+/* عنوان الرسالة */
+.letter-header {
+  font-size: 18px;
+  color: #d47a9d;
+  margin-bottom: 10px;
+  font-family: 'ParagraphFont', sans-serif;
+}
+
+/* نص الرسالة (تغيير الخط من هنا) */
+.letter-message {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  font-family: 'MyLetterFont', sans-serif; /* ✨ عدلي هذا الاسم */
+}
+</style>
+
+<script>
+document.getElementById('envelope').addEventListener('click', () => {
+  const envelope = document.getElementById('envelope');
+  const music = document.getElementById('bgMusic');
+
+  envelope.classList.toggle('open');
+  
+  if (envelope.classList.contains('open')) {
+    music.play();
+  } else {
+    music.pause();
+    music.currentTime = 0;
+  }
+});
+</script>
+
+
+
+
+</body>
+</html>
+

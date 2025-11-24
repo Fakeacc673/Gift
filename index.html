@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Website</title>
+  <link rel="icon" type="image/png" href="images/cake.png">
+  <style>
+    /* ---------------- Fonts ---------------- */
+    @font-face {
+      font-family: 'MainTitleFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'ParagraphFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'ButtonFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+    @font-face {
+      font-family: 'MenuFont';
+      src: url('fonts/KGPerfectPenmanship.otf') format('truetype');
+    }
+
+    /* ---------------- Reset ---------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ffeef5; /* baby pink */
+      color: #333;
+      font-family: 'ParagraphFont', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* خلفية النجوم */
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* يخليها بالخلف */
+    }
+
+    /* ---------------- Header ---------------- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-family: 'MainTitleFont', sans-serif;
+      font-size: 26px;
+      font-weight: bold;
+      color: #d47a9d;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      font-family: 'MenuFont', sans-serif;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d47a9d;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #d47a9d;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------------- Hero Section ---------------- */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 80px 60px;
+      margin-top: -50px;
+      position: relative;
+      z-index: 1; /* يضمن النص فوق النجوم */
+    }
+
+    .hero-text h2 {
+      font-family: 'MainTitleFont', sans-serif;
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .hero-text p {
+      font-family: 'ParagraphFont', sans-serif;
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .hero-text button {
+      font-family: 'ButtonFont', sans-serif;
+      background: #d47a9d;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      margin-top: 15px; /* ⬅⬅ أضفنا مسافة بين الزر والجملة */
+    }
+
+    .hero-text button:hover {
+      transform: translateY(-3px);
+      background: #b85d83;
+    }
+
+    .hero img {
+      width: 500px;
+      transform: translateY(-20px);
+    }
+
+    /* ---------------- Our Story ---------------- */
+    .story {
+      background: #fff;
+      margin: 60px auto;
+      padding: 40px;
+      width: 80%;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .story h3 {
+      font-family: 'MainTitleFont', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #d47a9d;
+    }
+
+    .story p {
+      font-family: 'ParagraphFont', sans-serif;
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* ---------------- Specials ---------------- */
+    .specials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 60px;
+    }
+
+    .special-item {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .special-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .special-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .special-item h4 {
+      font-family: 'MainTitleFont', sans-serif;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #d47a9d;
+    }
+
+    .special-item p {
+      font-family: 'ParagraphFont', sans-serif;
+      padding: 0 15px 20px;
+      color: #555;
+      font-size: 16px;
+    }
+
+    /* هذا تاع ال <p> يتحكم بالحجم نتاعه والسطور وقع*/
+    .hero-text p {
+      margin: 5px 0;   /* يقلل المسافة بين الفقرات */
+      line-height: 1.4; /* يتحكم بارتفاع السطر */
+    }
+  </style>
+</head>
+<body>
+
+    
+  <!-- خلفية النجوم -->
+  <div id="tsparticles"></div>
+
+  <!-- Header -->
+  <header>
+    <h1>Brew & Pink</h1>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#story">Our Message</a></li>
+        <li><a href="#specials">Cute things</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <h2>Happy Birthday, My Bestie</h2>
+      <p>Happy 20th Birthday, sweetheart ❤️.</p>
+      <p>Click the button below to see what we have prepared for you.</p>
+      <p>It's your day, enjoy.</p>
+
+      <!-- ⬇⬇ الزر صار رابط يفتح صفحة ثانية -->
+      <a href="second.html"><button>今すぐ発見</button></a>
+    </div>
+    <div class="hero-img">
+      <img src="images/catdog.png" alt="Coffee">
+    </div>
+  </section>
+
+  <!-- Our Story -->
+<section class="story" id="story">
+    <h3>Our Word</h3>
+    <p>
+      Each one of us "Dounia, Masil, Timo, Asia, Hadi, and Adam", wish you a happy and joyful year ❤️
+    </p>
+  </section>
+  
+
+  <!-- Specials -->
+<section class="specials" id="specials">
+  <div class="special-item">
+    <img src="gifs/bestgiftforu.gif" alt="Birthday Gift">
+    <h4>Birthday Gifts</h4>
+    <p>There's a gift waiting for you. If you see it, don't ask me how I came up with the idea hhhh</p>
+  </div>
+  <div class="special-item">
+    <img src="gifs/bestgiftforu2.gif" alt="Wishes">
+    <h4>Wishes for you</h4>
+    <p>There are some things we added for you to enjoy while browsing, did you like it?</p>
+  </div>
+  <div class="special-item">
+    <img src="gifs/bestgiftforu3.gif" alt="Our Preparation">
+    <h4>Our preparation</h4>
+    <p>If you are interested you can see this also ❤️.</p>
+  </div>
+</section>
+
+
+
+
+</body>
+</html>
